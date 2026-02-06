@@ -82,11 +82,13 @@ const Home = () => {
   }, [pokemons, debouncedSearch, hpCategories]);
 
   return (
-    <div>
-      <Header />
-      <main className="flex flex-col items-center gap-4 p-4">
-        <div className="flex w-full max-w-md flex-col items-center gap-0 mt-5">
-          <label className="relative flex w-full items-center rounded-lg border-2 border-blue-800 focus-within:ring-1 focus-within:ring-blue-800">
+    <div className="flex flex-col h-screen overflow-hidden">
+      <div className="shrink-0">
+        <Header />
+      </div>
+      <main className="flex-1 min-h-0 flex flex-col items-center gap-4 p-4 overflow-hidden">
+        <div className="flex w-full max-w-md shrink-0 flex-col items-center gap-0 mt-5">
+          <label className="relative flex w-full items-center rounded-lg border-2 border-yellow-500 focus-within:ring-1 focus-within:ring-yellow-500">
             <FontAwesomeIcon
               icon={faSearch}
               className="pointer-events-none absolute left-3 text-slate-400"
@@ -97,13 +99,13 @@ const Home = () => {
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
               placeholder="Search Pokemons…"
-              className="w-full rounded-lg border-0 bg-transparent py-2 pl-9 pr-20 text-blue-800 placeholder-blue-400 focus:outline-none focus:ring-0"
+              className="w-full rounded-lg border-0 bg-transparent py-2 pl-9 pr-20 text-yellow-500 placeholder-yellow-400 focus:outline-none focus:ring-0"
               aria-label="Search Pokemons"
             />
             <button
               type="button"
               onClick={() => setFilterAccordionOpen((prev) => !prev)}
-              className="absolute right-3 flex items-center gap-1 text-blue-800 hover:text-blue-600 outline-none focus:ring-2 focus:ring-blue-800 focus:ring-offset-1 rounded"
+              className="absolute right-3 flex items-center gap-1 text-yellow-500 hover:text-yellow-600 outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-1 rounded"
               aria-expanded={filterAccordionOpen}
               aria-label="Toggle filter options"
             >
@@ -121,7 +123,7 @@ const Home = () => {
           </label>
           {filterAccordionOpen && (
             <div
-              className="w-full overflow-hidden rounded-lg border-2 border-blue-800 bg-white/95 px-4 py-3"
+              className="w-full overflow-hidden rounded-lg border-2 border-blue-800 bg-yellow-500 px-4 py-3"
               role="region"
               aria-label="Additional filter options"
             >
@@ -139,7 +141,7 @@ const Home = () => {
                       className="accent-blue-800 rounded border-blue-800"
                     />
                     <span
-                      className={`inline-block w-3 h-3 rounded-full ${
+                      className={`inline-block w-3 h-3 rounded-full border border-blue-800 ${
                         cat.id === 'red'
                           ? 'bg-red-500'
                           : cat.id === 'orange'
@@ -156,7 +158,7 @@ const Home = () => {
                 <button
                   type="button"
                   onClick={clearAllFilters}
-                  className="mt-3 w-full rounded border border-blue-800 bg-transparent py-2 text-sm font-medium text-blue-800 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-offset-1"
+                  className="mt-3 w-full rounded border border-blue-800 bg-transparent py-2 text-sm font-medium text-blue-800 hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-offset-1"
                 >
                   Clear all filters
                 </button>
@@ -164,14 +166,14 @@ const Home = () => {
             </div>
           )}
         </div>
-        {isLoading && <p className="text-blue-800">Loading pokemons…</p>}
+        {isLoading && <p className="shrink-0 text-yellow-500">Loading pokemons…</p>}
         {error && (
-          <p className="text-red-600" role="alert">
+          <p className="shrink-0 text-red-600" role="alert">
             {error instanceof Error ? error.message : 'Something went wrong'}
           </p>
         )}
         {filteredPokemons != null && filteredPokemons.length > 0 && (
-          <div className="w-full max-w-6xl gap-4 max-[439px]:grid max-[439px]:grid-cols-1 min-[440px]:flex min-[440px]:flex-wrap min-[440px]:justify-center">
+          <div className="w-full max-w-6xl flex-1 min-h-0 overflow-auto gap-x-4 gap-y-2 max-[439px]:grid max-[439px]:grid-cols-1 min-[440px]:flex min-[440px]:flex-wrap min-[440px]:justify-center min-[440px]:content-start">
             {filteredPokemons.map((pokemon) => (
               <PokeCard pokemon={pokemon} key={pokemon.id} />
             ))}

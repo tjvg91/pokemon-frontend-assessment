@@ -18,13 +18,13 @@ const PokeCard = ({ pokemon }: PokeCardProps) => {
       />
   )
   const Name = () => (
-    <h2 className="mt-2 text-center font-semibold text-blue-800 font-pokemon-solid tracking-wide text-xl">
+    <h2 className="mt-2 text-center font-semibold text-slate-800 font-pokemon-solid tracking-wide text-xl">
       {pokemon.name}
     </h2>
   )
 
   const HP = () => (
-    <div className="flex justify-center items-center border border-blue-800 rounded-[20px] p-1 mt-4 relative w-full">
+    <div className="flex justify-center items-center border border-slate-800 rounded-[20px] p-1 mt-4 relative w-full">
       <div
         className={cn(
           'absolute top-0 left-0 w-full h-full rounded-[20px] opacity-100',
