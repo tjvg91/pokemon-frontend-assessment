@@ -1,3 +1,28 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+@import "tailwindcss";
+
+/* Class-based dark mode: add .dark to a parent (e.g. <html>) to enable. Light is default. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Fonts from assets/fonts */
+@font-face {
+  font-family: 'Pokemon Hollow';
+  src: url('./assets/fonts/Pokemon Hollow.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Pokemon Solid';
+  src: url('./assets/fonts/Pokemon Solid.ttf') format('truetype');
+}
+
+.font-pokemon-hollow {
+  font-family: 'Pokemon Hollow', sans-serif;
+}
+
+.font-pokemon-solid {
+  font-family: 'Pokemon Solid', sans-serif;
+}
+
+html,
+body {
+  @apply min-h-screen bg-yellow-500;
 }
